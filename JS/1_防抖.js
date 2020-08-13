@@ -15,7 +15,7 @@ function debounce( fn, wait ) {
         const ctx = this;
         timer = setTimeout(( ) => {
             fn.apply( ctx, arg );
-        }, timeout );
+        }, wait );
     }
 }
 
