@@ -38,6 +38,7 @@ var findDuplicate = function(nums) {
     for (let i = 0; i < nums.length; i++) {
       if (nums[i] <= mid) count++ // 统计小于等于mid的个数
     }
+    console.log(`low ${low} high ${high} mid ${mid} count ${count}`)
     if (count > mid) { // 重复数落在 [1,mid]
       high = mid       // 区间收缩
     } else {           // 落在 [mid+1,n]

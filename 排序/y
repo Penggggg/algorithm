@@ -1,0 +1,174 @@
+# 简介
+
+> 快排和归并排序，都着重于“分治”的思想。时间复杂度为 O(nlogn)。在数据量大时，比排序（上）的O( n^2 )要快。
+
+# 分治
+
+> 分治，顾名思义，就是分而治之，将一个大问题分解成小的子问题来解决。小的子问题解决了，大问题也就解决了。
+
+# 归并排序
+
+> 把数组【递归】拆成多个子区域，拆到不能再拆后，各个子区域再合并，合并过程中再进行排序。
+
+![image](https://static001.geekbang.org/resource/image/db/2b/db7f892d3355ef74da9cd64aa926dc2b.jpg)
+
+### 递推公式
+
+```
+mergeSort( p, r ) = merge( mergeSort( p, m ), mergeSort( m + 1, r )); // m为p、r中点
+
+终止条件：
+p >= r // 即：已经不能再分解了
+```
+
+- mergeSort
+
+```
+【拆解】核心代码：
+const mid = Math.floor( length /  2);
+   
+const left = arr.slice( 0,  mid);
+const right = arr.slice( mid, length );
+```
+
+- merge
+
+![image](https://static001.geekbang.org/resource/image/95/2f/95897ade4f7ad5d10af057b1d144a22f.jpg)
+
+```
+【按顺序合并2个数组】核心代码
+
+// 注：left、right在“归”的调用过程中，已经排好序了
+const merge = ( leftArr, rightArr ) => {
+    
+    // 两个数组对比排序
+    let result = [ ];
+    while ( leftArr.length > 0 && rightArr.length > 0 ) {
+        const popArr = arr => result.push( arr.shift( ));
+        popArr(  
+            leftArr[ 0 ] < rightArr[ 0 ] ?
+                leftArr :
+                rightArr
+        )
+    }
+    
+    // 剩余一方排序
+    return [
+        ...result,
+        ...leftArr.sort(( x, y ) => x - y ),
+        ...rightArr.sort(( x, y ) => x - y )
+    ]
+}
+```
+
+### 特点
+
+ - 归并排序是稳定的排序算法
+ - 时间复杂度是 O(nlogn)，
+ - 空间复杂度是 O(n)。
+ - 处理过程是由下到上的
+
+# 快速排序
+
+> 通过选取一个【对比点】，给数组【划分】两个【值大于、小于】对比点的区域。
+
+### 递推公式
+
+![image](https://static001.geekbang.org/resource/image/4d/81/4d892c3a2e08a17f16097d07ea088a81.jpg)
+
+```
+// m为对比点
+kp( p, r ) = [
+    ...kp( p, m - 1 ),
+    m,
+    ...kp( m + 1, r )
+]; 
+
+停止条件：
+p >= r
+```
+
+### 核心
+
+- 对比点
+
+> 一般而言就选取数组末尾元素为对比点 
+
+```
+const point = a[ a.length - 1 ];
+```
+
+- 优化点
+
+> 优化点在于以O( 1 )的时间复杂度进行分区，这个关键就是【交换】
+
+```
+// 交换
+[ a[ i ], a[ j ]] = [ a[ j ], a[ j ]]
+```
+
+- 分区过程
+  - 0、以数组末尾为对比点
+  - 1、通过下标i划分一个“已处理区”，i是一个可立即放入已处理区的“预备空间”
+  - 2、从下标0开始，除了末尾元素（对比点）遍历数组
+  - 3、如果元素小于对比点，则放入“预备空间”，且i++
+  - 4、否则不作处理，遍历下一个数组元素
+  - 5、把对比点跟i进行交换（！！！最重要的一步）
+
+```
+核心代码：
+
+const kp = a => {
+
+    // 终止条件
+    if ( a.length <= 1 ) return a;
+    
+    // i为“预备空间”，j为数组遍历
+    let i = 0;
+    let j = 0;
+    
+    // 对比点
+    const point = a[ a.length - 1];
+    
+    // a.length - 2，不遍历到对比点
+    for (; j <= a.length - 2; j++ ) {
+        if ( a[ j ] < point ) {
+            // 放入“预备空间”
+            [ a[ i ], a[ j ]] = [ a[ j ], a[ i ]];
+            i++;
+        }
+    }
+    
+    // 对比点跟i互换
+    [ a[ a.length-1 ],a[ i ]] = [ a[ i ],a[ a.length-1 ]];
+    
+    // 递推公式
+    return [ 
+        ...kp(a.slice(0,i)), 
+        lastVal, 
+        ...kp(a.slice(i+1))
+    ]
+}
+```
+
+### 特性
+
+- 处理过程是由上到下的
+- 时间复杂度也是 O(nlogn)
+
+# 应用（排第K大）
+
+> 如何在 O(n) 的时间复杂度内查找一个无序数组中的第 K 大元素？
+
+```
+快排思路：
+
+1、最后一个元素 A[n-1]作为 pivot
+2、分区：A[0…p-1]、A[p]、A[p+1…n-1]
+3、p+1=K，那 A[p]就是要求解的元素
+4、K>p+1, 说明第 K 大元素出现在 A[p+1…n-1]区间...
+```
+
+- 解释：
+
+如果我们把每次分区遍历的元素个数加起来，就是：n+n/2+n/4+n/8+…+1。这是一个等比数列求和，最后的和等于 2n-1。所以，上述解决思路的时间复杂度就为 O(n)。
