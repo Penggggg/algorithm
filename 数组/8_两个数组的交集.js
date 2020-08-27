@@ -19,7 +19,7 @@
  * 遍历数组O( m )，如果有出现过，则推入结果。
  */
 var intersect = function( nums1, nums2 ) {
-    const map = {};
+    const map = { };
     const res = [];
     for (const num1 of nums1) { // 存下nums1数字的出现次数
       if (map[num1]) {
