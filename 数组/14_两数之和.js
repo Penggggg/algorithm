@@ -19,18 +19,18 @@
  * 题目：
  * 找差值的过程
  */
-var twoSum = function(nums, target) {
-    let map = {};//key数字 value下标
-    let loop = 0;//循环次数
-    let dis;//目标与当前值的差
-    while(loop < nums.length){
-        dis = target - nums[loop];
+var twoSum = function( nums, target ) {
+    let map = { }; //key数字 value下标
+    let i = 0; //循环次数
+    let dis; //目标与当前值的差
+    while( i < nums.length ){
+        dis = target - nums[ i ];
         // 查找是否有差值
-        if(map[dis] != undefined){
-            return [map[dis], loop];
+        if( map[ dis ] !== undefined ) {
+            return [ map[ dis ], i ];
         }
-        map[nums[loop]] = loop;
-        loop++;
+        map[ nums[ i ]] = i;
+        i++;
     }
     return;
 };

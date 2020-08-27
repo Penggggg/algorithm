@@ -15,9 +15,9 @@
 
 
 const insertSort = arr => {
-    for( let i = 1; i < arr.length; i++ ) { // i=0默认为有序区
-        const target = arr[ i ];
+    for( let i = 1; i < arr.length; i++ ) { // i=0，默认为有序区
         let j =  i;
+        const target = arr[ i ];
         for( ; j > 0; j-- ) {
             if ( target >= arr[ j - 1 ]) break; // 找到了
             arr[ j ] = arr[ j - 1 ];  // 找不到，就挪一下
