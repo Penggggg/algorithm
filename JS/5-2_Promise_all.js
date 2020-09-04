@@ -7,14 +7,21 @@
 
 function MyPromise( ) { }
 
-MyPromise.all = function( promises ) {
-    return new MyPromise( r => {
-        let result = [ ];
-        promises.map(( p, k ) => {
-            p.then( data => {
-                result.splice( k, 1, data );
-                result.length === promises.length && r( result )
+MyPromise.all = function( list ) {
+    return new Promise(( r, j ) => {
+        let count = 0;
+        let res = [ ];
+        for ( let [ i, p ] of list ) {
+            // 防止可能不是Promise类型
+            Promise.resolve( p ).then( res => {
+                count++;
+                res[ i ] = res;
+                if ( count === list.length ) {
+                    r( res )
+                }
+            }, err => {
+                j( err )
             })
-        })
-    });
+        }
+    })
 }
