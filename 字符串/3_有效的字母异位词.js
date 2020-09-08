@@ -22,12 +22,12 @@
  * 求同，排除异
  * 把两个字符串根据ASCALL排序，然后比较
  */
-const isStr = ( s1, s2 ) => {
+var isAnagram = function(s, t) {
     const sortStr = s => s.split('')
         .sort(( x, y ) => x.charCodeAt( 0 ) - y.charCodeAt( 0 ))
         .join('');
-    return sortStr( s1 ) === sortStr( s2 );
-}
+    return sortStr( s ) === sortStr( t );
+};
 
-console.log( isStr( 'anagram', 'nagaram' ))
-console.log( isStr( 'rat', 'car' ))
+console.log( isAnagram( 'anagram', 'nagaram' ))
+console.log( isAnagram( 'rat', 'car' ))

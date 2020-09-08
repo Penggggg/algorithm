@@ -13,18 +13,6 @@
 
 
 
-/**
- * 
- * @description
- * 
- * 思路1：
- * 利用new set的唯一性，但不符合题意
- */
-const solution1 = arr => {
-    const set = new Set( );
-}
-
-
 
 /**
  *
@@ -34,18 +22,15 @@ const solution1 = arr => {
  * ptr指针法，它总指向下一个可以交换的位置
  * ptr - 1，则是上一个需要被对比的元素
 */
-const solution = arr => {
-    if ( !arr.length || arr.length === 1 ) return arr;
+const removeDuplicates = nums => {
     let ptr = 1;
-    for ( let i in arr ) {
-        if ( arr[ ptr - 1 ] < arr[ i ] && ptr !== Number( i )) { // 值不等且大于（题意），下标不等
-            [ arr[ ptr ], arr[ i ]] = [ arr[ i ], arr[ ptr ]];
-            ptr++;
-        } else if ( arr[ ptr - 1 ] < arr[ i ] && ptr === Number( i )) { // 下标相等，则跳过
-            ptr++;
+    for ( let i = 1; i < nums.length; i++ ) {
+        if ( nums[ i ] !== nums[ i - 1 ]) {
+            nums[ ptr++ ] = nums[ i ];
         }
     }
-    return arr;
+    return ptr;
 }
 
-console.log( solution([ 0, 0, 1, 2, 3, 3, 5 ]))
+
+console.log( removeDuplicates([ 0, 0, 1 ]))

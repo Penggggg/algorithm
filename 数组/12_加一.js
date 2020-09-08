@@ -22,12 +22,19 @@
  * @description
  * 
  * 思路：
- * 利用原有的十进制解决问题
+ * 利用十进制，会出现精度问题，只能手动实现加法法则
  */
-const solution = arr => {
-    const num = Number( arr.join(''));
-    return String( num + 1 ).split('');
+const plusOne = digits => {
+    let fix = 0;
+    res = [ ];
+    const size = digits.length - 1;
+    for ( let i = size; i >= 0; i-- ) {
+        const cur = digits[ i ] + ( i === size ? 1 : fix );
+        res.unshift( cur % 10 );
+        fix = cur >= 10 ? 1 : 0
+    }
+    !!fix && res.unshift( fix );
+    return res;
 }
 
-
-console.log( solution([ 1, 2, 3 ]))
+console.log( plusOne([ 9, 9, 9 ]))

@@ -16,7 +16,9 @@
  * @description
  * 
  * 思路：
- * 遍历数组，记录每个数字的出现次数。若有大于1的，直接return
+ * O( n )时间：
+ * 遍历数组，记录每个数字的出现次数
+ * 遍历过程中，若有大于1的，直接return
  */
 var containsDuplicate = function( nums ) {
     let map = { };

@@ -20,9 +20,9 @@
  * 找差值的过程
  */
 var twoSum = function( nums, target ) {
-    let map = { }; //key数字 value下标
-    let i = 0; //循环次数
-    let dis; //目标与当前值的差
+    let map = { }; // key数字 value下标
+    let i = 0; // 循环次数
+    let dis; // 目标与当前值的差
     while( i < nums.length ){
         dis = target - nums[ i ];
         // 查找是否有差值

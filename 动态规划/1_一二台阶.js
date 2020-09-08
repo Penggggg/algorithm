@@ -7,29 +7,29 @@
  */
 
 
+
 /**
  * 
  * @description
  * 
  * 思路：
- * 1、数组dp（一维）。含义：跳上第i级的台阶总共有dp[ i ]种跳法
- * 2、dp之间的关系。含义：dp[ n] = dp[ n-1] + dp[ n-2]（到达第 n 级的台阶有两种方式：分别从第 n-1、n-2 级跳上来）
- * 3、初始值。dp[ 0 ] = 0，dp[ 1 ] = 1，dp[ 2 ] = 2（这个很特殊）
+ * 动态规划：主问题可被拆解且解决过程是重复的思路、拥有无后向性
+ * 
+ * 步骤：
+ * 定义dp、初始化dp、递推公式、终止条件
+ * 
+ * 递推：
+ * dp( n ) = dp( n - 1 ) + dp( n - 2 )
+ * 
+ * 特殊：
+ * dp[ 0 ]为哨兵变量
  */
-
-const Steps = n => { 
-    
-    if ( n <= 1 ) return n;
-
-    // 初始值
-    const dp = [ 0, 1, 2 ];
-
-    // 推导
+var climbStairs = function( n ) {
+    const dp = [ 0, 1 , 2 ]; // 初始化 + 哨兵变量
     for ( let i = 3; i <= n; i++ ) {
-        dp[ i ] = dp[ i - 1 ] + dp[ i - 2 ];
+        dp[ i ] = dp[ i - 1 ] + dp[ i - 2 ]
     }
     return dp[ n ];
-}
+};
 
-console.log( Steps( 10 ))
-
+console.log( climbStairs( 10 ))

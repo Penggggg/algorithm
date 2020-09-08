@@ -16,11 +16,11 @@
  * str.replace(/[^0-9a-zA-Z]/g, '').toLowerCase()
  */
 const sulotion = s => {
-    s = s.replace(/[^0-9a-zA-Z]/g, '').toLowerCase( );
+    s = s.replace(/[^0-9a-zA-Z]/g, '').toLowerCase( ); // 预先处理
     let x = 0;
     let y = s.length - 1;
     while( x < y ) {
-        if ( s[ x ].toLowerCase( ) !== s[ y ].toLowerCase( )) return false;
+        if ( s[ x ] !== s[ y ]) return false;
         x++;
         y--;
     }
