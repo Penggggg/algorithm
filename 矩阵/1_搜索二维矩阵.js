@@ -31,22 +31,20 @@
  * 直到数组越界可以停下来了。
  */
 var searchMatrix = function( matrix, target ) {
-    if ( !matrix.length ) {
-      return false;
-    }
-    if ( target < matrix[ 0 ][ 0 ]) {
-      return false;
-    }
+    if ( !matrix.length ) return false;
+    if ( target < matrix[ 0 ][ 0 ]) return false;
+
+    let col = 0; // 初始化
     let row = matrix.length - 1;
-    let col = 0;
-    while( col < matrix[0].length && row >= 0) {
-      if (matrix[ row ][ col ] > target ) {
-        row--;
-      } else if ( matrix[ row ][ col ] < target ) {
-        col++
-      } else {
-        return true;
-      }
+
+    while( col < matrix[ 0 ].length && row >= 0 ) {
+        if ( matrix[ row ][ col ] > target ) {
+          row--;
+        } else if ( matrix[ row ][ col ] < target ) {
+          col++;
+        } else {
+          return true;
+        }
     }
     return false;
   }
