@@ -13,11 +13,12 @@
  * 思路：
  * 从左到右，依次进行位运算
  * 
- * 位运算符
- * n ^ n === 0 且 n ^ 0 === n
+ * 位运算符：
+ * n ^ n === 0 
+ * n ^ 0 === n
  */
 var singleNumber1 = nums => {
-    let res = nums[ 0 ]
+    let res = nums[ 0 ];
     for ( let i = 1; i < nums.length; i++ ) {
       res = res ^ nums[ i ];
     }

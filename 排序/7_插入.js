@@ -19,10 +19,10 @@ const insertSort = arr => {
         let j =  i;
         const target = arr[ i ];
         for( ; j > 0; j-- ) {
-            if ( target >= arr[ j - 1 ]) break; // 找到了
+            if ( target >= arr[ j - 1 ]) break; // 找到了,停止遍历
             arr[ j ] = arr[ j - 1 ];  // 找不到，就挪一下
         }
-        arr[ j ] = target;
+        arr[ j ] = target; // 插入
     }
     return arr;
 }

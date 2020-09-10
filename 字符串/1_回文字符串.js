@@ -12,7 +12,7 @@
  * @description
  * 
  * 思路1：
- * 双指针，初始位置分别从头、尾。移动指针，相互逼近
+ * 回文通过可用双指针，分别从头、尾。移动指针，相互逼近
  * str.replace(/[^0-9a-zA-Z]/g, '').toLowerCase()
  */
 const sulotion = s => {

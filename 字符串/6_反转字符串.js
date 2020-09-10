@@ -16,7 +16,7 @@
  * @description
  * 
  * 思路:
- * 双指针
+ * 反转、互换：双指针
  */
 const solution = s => {
     let x = 0;

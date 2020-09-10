@@ -19,12 +19,12 @@
  * @description
  * 
  * 思路：
- * 求同，排除异
+ * 匹配问题，通过可以通过排序，求同，排除异
  * 把两个字符串根据ASCALL排序，然后比较
  */
 var isAnagram = function(s, t) {
     const sortStr = s => s.split('')
-        .sort(( x, y ) => x.charCodeAt( 0 ) - y.charCodeAt( 0 ))
+        .sort(( x, y ) => x.charCodeAt( ) - y.charCodeAt( ))
         .join('');
     return sortStr( s ) === sortStr( t );
 };

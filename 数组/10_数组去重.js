@@ -19,8 +19,7 @@
  * @description
  * 
  * 思路：
- * ptr指针法，它总指向下一个可以交换的位置
- * ptr - 1，则是上一个需要被对比的元素
+ * 交换通常是双指针法
 */
 const removeDuplicates = nums => {
     let ptr = 1;

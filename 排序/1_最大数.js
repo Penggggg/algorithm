@@ -25,6 +25,7 @@ const composeMax = ( nums ) => {
   const _nums = nums.sort(( a, b ) => {
       return -( Number(`${a}${b}`) - Number(`${b}${a}`));
   });
+  console.log(  _nums )
   return _nums[ 0 ] ? Number( _nums.join('')) : 0;
 }
 console.log( composeMax([ 3,30,34,5,9 ]))

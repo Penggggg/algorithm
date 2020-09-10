@@ -27,7 +27,7 @@ const kp = arr => {
     const sArr = [ ];
     const bArr = [ ];
     const point = arr[ arr.length - 1 ]; // 对比点默认为数组最后一个元素
-    while ( arr.length > 1 ) { // 拆
+    while ( arr.length > 1 ) { // 除了point
         const n = arr.shift( );
         if ( n >= point ) {
             bArr.push( n )

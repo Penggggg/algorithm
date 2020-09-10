@@ -24,14 +24,13 @@
 
 
 var findPeakElement = function(nums) {
-   // 特殊情况
-   if ( !nums.length ) return -1;
+   if ( !nums.length ) return -1; // 特殊情况
    if ( nums.length === 1 ) return 0;
-   // 边界情况，321或者123
-   if ( nums[ 0 ] > nums[ 1 ]) return 0;
+   
+   if ( nums[ 0 ] > nums[ 1 ]) return 0; // 边界情况，321或者123
    if ( nums[ nums.length - 1 ] > nums[ nums.length - 2 ]) return nums.length - 1;
-   // 正常情况，遍历法
-   for( let i = 1; i <= nums.length - 2; i++) {
+   
+   for( let i = 1; i <= nums.length - 2; i++) { // 正常情况，遍历法
        if ( nums[ i ] > nums[ i - 1 ] && nums[ i ] > nums[ i + 1 ]) {
            return i;
        }

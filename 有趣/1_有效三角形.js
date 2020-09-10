@@ -24,7 +24,7 @@ var triangleNumber = function( nums ) {
      for( let i = nums.length - 1; i > 1; i-- ){
          let l = 0;
          let r = i - 1;
-         while( l < r ) {
+         while(  l < r ) {
              if( nums[ l ] + nums[ r ] > nums[ i ]){
                  res += r - l;
                  r--;

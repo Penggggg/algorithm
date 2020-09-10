@@ -42,9 +42,8 @@ MyPromise.prototype.then = function ( cb ) {
         /**
          * 包装一下cb，并且返回Promise
          */
-        return bridgePromise = new MyPromise( r => {
-            // 闭包
-            self.onFulfilledArr.push( val => {
+        return new MyPromise( r => {
+            self.onFulfilledArr.push( val => { // 闭包
                 // 把cb的执行结果，通过新promise的resolve，返回给新promise的then
                 r( cb( val ));
             });

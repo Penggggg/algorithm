@@ -15,6 +15,5 @@
  * 因为大于一半, 所以排序后的 中间那个数必是
  */
 var majorityElement = nums => {
-    const sorted = nums.sort(( x, y ) => x - y );
-    return sorted[ Math.floor( sorted.length / 2 )]
+    return nums.sort(( x, y ) => x - y )[ Math.floor( nums.length / 2 )]
 };
