@@ -15,11 +15,11 @@
  * @description
  * 
  * 思路：
- * 交换操作，一般伴随着双指针
+ * 交换，一般伴随着双指针
  */
 var moveZeroes = function( nums ) {
     let j = 0;
-    for ( let i = 0; i < nums.length; i++ ) {
+    for ( let i = 0; i < nums.length; i++ ) { // 从0开始
         if ( nums[ i ] !== 0 ) {
             [ nums[ i ], nums[ j ]] = [ nums[ j ], nums[ i ]];
             j++;
@@ -28,4 +28,5 @@ var moveZeroes = function( nums ) {
     return nums
 };
 
-console.log( moveZeroes([ 0, 1, 0, 3, 12 ]))
+// console.log( moveZeroes([ 0, 1, 0, 3, 12 ]))
+console.log( moveZeroes([ 1, 2 ]))

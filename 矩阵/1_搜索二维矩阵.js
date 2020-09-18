@@ -47,7 +47,7 @@ var searchMatrix = function( matrix, target ) {
         }
     }
     return false;
-  }
+}
 
   console.log(searchMatrix([
     [1,   4,  7, 11, 15],

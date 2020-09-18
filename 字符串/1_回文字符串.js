@@ -12,8 +12,7 @@
  * @description
  * 
  * 思路1：
- * 回文通过可用双指针，分别从头、尾。移动指针，相互逼近
- * str.replace(/[^0-9a-zA-Z]/g, '').toLowerCase()
+ * 回文提醒通过可用双指针，分别从头、尾。移动指针，相互逼近
  */
 const sulotion = s => {
     s = s.replace(/[^0-9a-zA-Z]/g, '').toLowerCase( ); // 预先处理
