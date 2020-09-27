@@ -20,15 +20,13 @@ const { ListNode } = require('./0');
  * 2、返回的是原链尾
  */
 var reverseList = function( head ) {
-    let pre = null;
-    let ptr = head;
-    while ( !!ptr ) {
-        const next = ptr.next;
-        ptr.next = pre;
-        pre = ptr;
-        ptr = next;
+    let reverse = ( pre, cur ) => {
+        if( !cur ) return pre; 
+        const next = cur.next;
+        cur.next = pre;
+        return reverse( cur, next );
     }
-    return pre;
+    return reverse( null, head );
 };
 
 const n3 = new ListNode({ val: 3 })
