@@ -17,10 +17,16 @@
  * @description
  * 
  * 思路：
- * 1维dp：下标为n时的前n项最大和
+ * 1维dp：下标为i时，前i项的最大和
+ * 
  * 
  * 推导：
- * dp[ n ] = Math.max( dp[ n − 1 ] + nums[ n ], nums[ n ])
+ * dp[ n ] = Math.max(  
+ *      dp[ n − 1 ] + nums[ n ], // 前n-1项最大和 + 自身
+ *      nums[ n ] // 自身
+ * )
+ * 
+ * 备注：11%、8%
  */
 var maxSubArray = function( nums ) {
     const dp = [ nums[ 0 ]];

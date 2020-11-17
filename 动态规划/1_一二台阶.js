@@ -32,4 +32,4 @@ var climbStairs = function( n ) {
     return dp[ n ];
 };
 
-console.log( climbStairs( 10 ))
+console.log( climbStairs( 0 ))
