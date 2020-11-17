@@ -60,19 +60,18 @@ var maxSlidingWindow1 = function( nums, k ) {
  * 效率：46%、28%
  */
 var maxSlidingWindow = function( nums, k ) {
-    const win = [ ];
-    const res = [ ];
+    const win = [ ], res = [ ];
     if ( nums.length < k ) return [ ];
-    for ( let i = 0; i < nums.length; i++ ) {
+    for ( let i = 0; i < nums.length; i++ ) { // 逐一入队列
         if ( win[ 0 ] !== undefined && win[ 0 ] <= i - k ) {  // 把窗口之外的元素剔除
             win.shift( );
         }
-        while ( nums[ win[ win.length - 1 ]] < nums[ i ]){ // 插入新元素时，确保窗口头部是当前的最大值
+        while ( nums[ win[ win.length - 1 ]] < nums[ i ]){ // 插入新元素时，确保窗口头部是当前的最大值，因此需要不断比较将前方元素并条件删除
             win.pop( );
         }
-        win.push( i );
+        win.push( i ); // 插入的是下标
         if ( i >= k - 1 ) {
-            res.push( nums[ win[ 0 ]])
+            res.push( nums[ win[ 0 ]]) // 结果
         }
     }
     return res;
